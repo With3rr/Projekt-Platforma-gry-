@@ -1,0 +1,71 @@
+﻿<Application x:Class="ProjektProgramowanieObjektowe.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ProjektProgramowanieObjektowe"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="{x:Type Panel}" x:Key="stylPaneli">
+            <Setter Property="Background" Value="Bisque">
+                
+            </Setter>
+            
+        </Style>
+        <Style TargetType="{x:Type Panel}" x:Key="stylOkienek">
+            <Setter Property="Background" Value="DarkGray">
+
+            </Setter>
+
+        </Style>
+        <Style TargetType="{x:Type TextBlock}" x:Key="stylTb">
+            <Setter Property="FontFamily" Value="Global Monospace">
+
+
+            </Setter>
+            <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+
+        </Style>
+        
+        <Style TargetType="{x:Type TextBox}" x:Key="stylTbBox">
+            <Setter Property="FontFamily" Value="Global Monospace">
+
+            </Setter>
+            <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="buttony">
+            <Setter Property="Background" Value="Beige">
+
+            </Setter>
+            <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+            <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+            <Setter Property="Width" Value="170"></Setter>
+            <Setter Property="Height" Value="48"></Setter>
+
+
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="buttony2">
+            <Setter Property="Background" Value="BurlyWood">
+
+            </Setter>
+            <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+            <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+            <Setter Property="Width" Value="170"></Setter>
+            <Setter Property="Height" Value="48"></Setter>
+
+
+        </Style>
+        <Style TargetType="{x:Type MenuItem}" x:Key="mItem">
+            <Setter Property="Background" Value="BurlyWood">
+
+            </Setter>
+            <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+            <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+           
+
+
+        </Style>
+
+
+    </Application.Resources>
+</Application>

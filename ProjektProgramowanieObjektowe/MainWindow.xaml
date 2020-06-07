@@ -1,0 +1,870 @@
+﻿<Window x:Class="ProjektProgramowanieObjektowe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektProgramowanieObjektowe"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+    <Window.Resources>
+        <local:KonwersjaBoolVisibity x:Key="konwerterBoolVisi"></local:KonwersjaBoolVisibity>
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="main1" Style="{StaticResource stylPaneli}">
+            
+            <Grid x:Name="Logowanie" Height="448" Width="350"   Style="{StaticResource stylOkienek}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="321,70,321,51">
+                <TextBlock Text="Logowanie" HorizontalAlignment="Center" Style="{StaticResource stylTb}" FontSize="40" Margin="64,29,68,349"  Width="218" ></TextBlock>
+
+
+
+
+                <StackPanel Margin="35,100,35,26">
+                    <TextBlock x:Name="labelemail" Text="Username" FontSize="20"  Background="{x:Null}"  Style="{StaticResource stylTb}" ></TextBlock>
+                    <TextBox x:Name="emailusernameLogin" Height="40" Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  Style="{StaticResource stylTbBox}"/>
+                    <TextBlock x:Name="lpasswotd" Text="Password" FontSize="20"  Background="{x:Null}" Style="{StaticResource stylTb}" ></TextBlock>
+                    <PasswordBox x:Name="passwordLogin" Height="40" Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
+                    <Grid x:Name="kontoihaslo" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+
+                    </Grid>
+
+                    <Separator Height="10" IsHitTestVisible="False"/>
+                    <Button x:Name="LogInNow" Style="{StaticResource buttony}"     Content="Logowanie"  FontSize="16"  Width="Auto" Height="49" Margin="18,0" Click="LogInNow_Click"/>
+                    <Separator  Height="15"></Separator>
+                    <Button x:Name="ClickToRegister"  Style="{StaticResource buttony2}" Content="Rejestracja"   Margin="18,0" FontFamily="Global Monospace" FontSize="16"  Width="Auto" Click="ClickToRegister_Click"/>
+                    <Button x:Name="PrzypomnijHaslo"  Style="{StaticResource buttony2}" Content="Przypomnij hasło"  Height="20" Width="150" Margin="0,10"  HorizontalAlignment="Right" FontFamily="Global Monospace" FontSize="12" Click="PrzypomnijHaslo_Click_1"   />
+
+
+
+                </StackPanel>
+
+                <Label x:Name="bladLogowania"  Content="Nie podano wszystkich danych"  FontFamily="Microsoft Uighur" FontWeight="Bold" FontStyle="Italic" Foreground="Red" Margin="4,402,188,20" Visibility="Collapsed"/>
+                <Label x:Name="brakUsera" Margin="4,423,145,3" Content="Niepoprawne dane lub konto nie istnieje"  FontFamily="Microsoft Uighur" FontSize="12" FontWeight="Bold" FontStyle="Italic" Foreground="Red" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"/>
+
+
+
+            </Grid>
+            <StackPanel x:Name="Przypomnieniehasla" Width="300" Style="{StaticResource stylOkienek}" Margin="347,33,345,63" Visibility="Collapsed">
+                <TextBlock Text="Przypomnij hasło" HorizontalAlignment="Center" Style="{StaticResource stylTb}" Margin="0,5" FontSize="22"></TextBlock>
+                <TextBlock Margin="5,0"   Text="Login" FontSize="20"  Background="{x:Null}"  Style="{StaticResource stylTb}" ></TextBlock>
+                <TextBox x:Name="LoginPrzypomnienieHasła"  Height="40" Margin="20,10,20,10" Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  Style="{StaticResource stylTbBox}"/>
+                <TextBlock Margin="5,0" Text="Jak imie ma twój pies?" FontSize="20"  Background="{x:Null}" Style="{StaticResource stylTb}" ></TextBlock>
+                <TextBox x:Name="odpPrzypomnieniehasla" Margin="20,10,20,10"  Height="40"  Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{StaticResource stylTbBox}"/>
+                <Border BorderBrush="Azure" BorderThickness="1">
+                    <StackPanel x:Name="PanelPrzypominania" Visibility="Hidden">
+                        <TextBlock  Margin="5,5,0,0" Text="Twoje hasło" FontSize="20"  Background="{x:Null}" Style="{StaticResource stylTb}" Foreground="#FF0A3C11" ></TextBlock>
+                        <TextBlock Margin="20,10,20,10" x:Name="Przypomnianehaslo"  VerticalAlignment="Center"   Height="40" Background="#FFA3B4AA"   Style="{StaticResource stylTb}" Foreground="#FF0A4020" FontSize="30"/>
+
+                    </StackPanel>
+                </Border>
+
+
+                <TextBlock x:Name="bladPrzypomnieniahasla" Margin="5,5" Text="Podano niepoprane dane" Foreground="#FFDC1111" Visibility="Hidden"/>
+                <Button Content="Przypomnij hasło" Height="50" Margin="50,10" Style="{StaticResource buttony2}" Click="Button_Click_12" >
+
+                </Button>
+                <Button Content="Wyjdź" Height="50" Margin="50,10" Style="{StaticResource  buttony2}" Click="Button_Click_13"  >
+
+                </Button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </StackPanel>
+            <Grid x:Name="Rejestracja" Height="500" Width="350"   Style="{StaticResource stylOkienek}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                <TextBlock Text="Rejestracja" HorizontalAlignment="Center" Style="{StaticResource stylTb}" FontSize="40" Margin="42,6,42,445"  Width="266" ></TextBlock>
+
+
+
+
+                <StackPanel Margin="35,62,35,10">
+                    <TextBlock x:Name="labelemailRejestracja" Text="Username" FontSize="20"  Background="{x:Null}"  Style="{StaticResource stylTb}" ></TextBlock>
+                    <TextBox x:Name="LoginRejestracja" Height="40" Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  Style="{StaticResource stylTbBox}"/>
+                    <TextBlock x:Name="labelemailRej" Text="Email" FontSize="20"  Background="{x:Null}"  Style="{StaticResource stylTb}" ></TextBlock>
+                    <TextBox x:Name="emailRejestracja" Height="40" Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  Style="{StaticResource stylTbBox}"/>
+
+                    <TextBlock x:Name="lpasswotdRejestracja" Text="Password" FontSize="20"  Background="{x:Null}" Style="{StaticResource stylTb}" ></TextBlock>
+
+                    <TextBox x:Name="passwordRejestracja" Height="40" Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{StaticResource stylTbBox}"/>
+
+                    <TextBlock x:Name="pyttPrzyp" Text="Pytanie pomocnicze" FontSize="20"  Background="{x:Null}" Style="{StaticResource stylTb}" ></TextBlock>
+                    <TextBox x:Name="pytanieRejestracja" Height="40" Background="#FFC5B3B3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{StaticResource stylTbBox}"/>
+                    <Label x:Name="takiedanesa" Grid.Column="1" Content="Konto już istnieje lub niepoprawne dane" VerticalContentAlignment="Center" Foreground="Red" Visibility="Collapsed" FontSize="10"/>
+                    <Grid x:Name="kontoihasloRejestracja" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+
+                    </Grid>
+
+                    <Separator Height="3" IsHitTestVisible="False"/>
+                    <Button x:Name="Rejestrowanie" Style="{StaticResource buttony}"     Content="Rejestracja"  FontSize="16"  Width="Auto" Height="49" Margin="18,0" Click="Rejestrowanie_Click" />
+                    <Separator  Height="7"></Separator>
+                    <Button x:Name="Dologowania"  Style="{StaticResource buttony2}" Content="Logowanie"   Margin="18,0" FontFamily="Global Monospace" FontSize="16"  Width="Auto" Click="Dologowania_Click" />
+
+
+
+                </StackPanel>
+
+                <TextBlock x:Name="bladRejestracji" Margin="6,483,121,5" Text="Niepoprawne dane bądź użytkownik już istnieje"  Style="{StaticResource stylTb }" FontSize="8" FontWeight="Bold" FontStyle="Italic" Foreground="#FF931818" Visibility="Collapsed"/>
+
+
+
+
+
+            </Grid>
+            <Grid x:Name="potwierdzenieRejestracji"  Height="182" Width="350"   Style="{StaticResource stylOkienek}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="321,180,321,207" Visibility="Collapsed">
+                <TextBlock Text="Gratulacje !!!" HorizontalAlignment="Center" Style="{StaticResource stylTb}" FontSize="40" Margin="42,20,42,108"  Width="266" ></TextBlock>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Text="Twoje konto zostało pomyślnie utwożone" Style="{StaticResource stylTb}" Margin="15,76,15,78" FontSize="14" Foreground="#FFD7F5F5" ></TextBlock>
+                <Separator Margin="0,92,0,71"></Separator>
+                <Button Style="{StaticResource buttony}" Content="Logowanie" Margin="90,105,90,17" Click="Button_Click"></Button>
+
+
+
+
+
+
+
+
+
+
+
+
+            </Grid>
+
+        </Grid>
+
+        <Grid x:Name="main2" Style="{StaticResource stylPaneli}" Visibility="Collapsed">
+            <Grid x:Name="startGry" Margin="0,32,0,0">
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                        <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+                        <Setter Property="Background" Value="BurlyWood"></Setter>
+
+                    </Style>
+                </Grid.Resources>
+                <StackPanel  Margin="299,101,299,191" Style="{StaticResource stylOkienek}" >
+                    <TextBlock Text="Wielkość zakładu" Margin="0,5,0,5" Padding="5,0"  FontSize="16" >
+
+                    </TextBlock>
+                    <ComboBox x:Name="wybranyZaklad" Margin="20,5" SelectedIndex="0" >
+                        <ComboBoxItem Content="2 PLN" ></ComboBoxItem>
+                        <ComboBoxItem Content="5 PLN"></ComboBoxItem>
+                        <ComboBoxItem Content="10 PLN"></ComboBoxItem>
+                        <ComboBoxItem Content="20 PLN"></ComboBoxItem>
+
+                    </ComboBox>
+                    <TextBlock Text="Specjalny kolor"  Margin="0,5,0,5" Padding="5,0"  FontSize="16" ></TextBlock>
+                    <StackPanel Margin="20,5">
+                        <RadioButton x:Name="rb1" Content="Czerwony" Background="#FFCD1818" IsChecked="True"></RadioButton>
+                        <RadioButton x:Name="rb2" Content="Niebieski" Background="#FF112E8D"></RadioButton>
+                        <RadioButton x:Name="rb3" Content="Zielony" Background="#FF3BA41C"></RadioButton>
+                        <RadioButton x:Name="rb4" Content="Brązowy" Background="#FFB47316"></RadioButton>
+                        <RadioButton x:Name="rb5" Content="Pomarańczowy" Background="#FFB0512D"></RadioButton>
+
+                    </StackPanel>
+
+                    <Button Margin="100,5"   Content="Generuj zestawy"  FontSize="20"  Width="Auto" Click="Button_Click_1">
+                        <Button.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Beige">
+
+                                </Setter>
+                                <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                                <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+            <Grid x:Name="HistoriaGier" Margin="0,32,0,0" Visibility="Collapsed">
+                <Grid.Resources>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                        <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <DataGrid x:Name="MojeRozegraneGry" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" GridLinesVisibility="None"  Background="AntiqueWhite" RowBackground="WhiteSmoke">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="40"  Binding="{Binding Path=Id_rozgrywajacego}" FontSize="15">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="Id" Background="AntiqueWhite" Width="30"></TextBlock>
+
+                            </DataGridTextColumn.Header>
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Width="200" Header="Czas rozegrania" Binding="{Binding Path=CzasRozegrania}" FontSize="15"></DataGridTextColumn>
+                        <DataGridTextColumn Width="80" Header="Wygrana" Binding="{Binding Path=WartoscWygranej}" FontSize="15"></DataGridTextColumn>
+                        <DataGridTextColumn Width="60" Header="Zakład" Binding="{Binding Path=PostawionaGotowka}" FontSize="15"></DataGridTextColumn>
+                        <DataGridTextColumn Width="300" Header="Zaznaczone liczby" Binding="{Binding Path=TrafioneLiczby}" FontSize="15"></DataGridTextColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid x:Name="Profil" Margin="0,32,0,0" Visibility="Collapsed">
+                <Grid x:Name="ProfilDane"   Opacity="0.6" Margin="0,0,0,4" >
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="280"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+
+
+
+
+
+
+
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Dane użytkownika" VerticalAlignment="Center" FontSize="25"></TextBlock>
+
+
+                    <TextBlock  Grid.Row="2" Grid.Column="0" Text="Imie:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                    <TextBlock  Grid.Row="4" Grid.Column="0" Text="Nazwisko:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                    <TextBlock  Grid.Row="6" Grid.Column="0" Text="Hobby:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                    <TextBlock  Grid.Row="8" Grid.Column="0" Text="O sobie:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                    <TextBlock  Grid.Row="13" Grid.Column="0" Text="Pyt. pomocnicze:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+
+                    <TextBlock  Grid.Row="12" Grid.Column="1" Text="Jak na imię ma twój pies?" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+
+                    <TextBlock x:Name="bladPytania"   Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Text="Niepoprawnie uzupełnione dane(za krótka odpowiedź na pytanie bądź za długie dane !!!! " HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontSize="10" Foreground="#FFCD1515" Visibility="Collapsed" />
+
+
+
+
+
+                    <TextBox x:Name="ImieDane"    Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                    <TextBox x:Name="NazwiskoDane"   Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                    <TextBox x:Name="HobbyDane"    Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                    <TextBox x:Name="OsobieDane" Grid.RowSpan="3"   Grid.Row="8" Grid.Column="1"  BorderBrush="#FF0E1323" ></TextBox>
+                    <TextBox x:Name="PytPom"    Grid.Row="13" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323"  ></TextBox>
+
+                </Grid>
+                <Button  Height="50" Width="160" Content="Zapisz" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,710,28" Style="{StaticResource buttony}" FontSize="20" Click="Button_Click_9"></Button>
+
+
+
+
+
+
+            </Grid>
+            <Grid x:Name="potwierdzeniezmiany" Width="300" Margin="346,184,346,287" Style="{StaticResource stylOkienek}" Visibility="Collapsed">
+                <TextBlock Text="Pomyślnie zmieniono dane" HorizontalAlignment="Center" Style="{StaticResource stylTb}" FontSize="19" Margin="13,7,13,63" ></TextBlock>
+                <Button Content="Zamknij" Height="Auto" Width="Auto"  Style="{StaticResource buttony2}" Click="Button_Click_10" Margin="83,38,83,21"></Button>
+            </Grid>
+            <Grid x:Name="HistoriaGierAll" Margin="0,32,0,0" Visibility="Collapsed">
+                <Grid.Resources>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                        <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <DataGrid x:Name="MojeRozegraneGryWszystkich" IsReadOnly="True"   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" GridLinesVisibility="None"  CanUserResizeRows="False" Background="AntiqueWhite" RowBackground="WhiteSmoke"  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="30" Binding="{Binding Path=Id_rozgrywajacego}" FontSize="12">
+                            <DataGridTextColumn.Header>
+                                <TextBlock Text="Id" Background="AntiqueWhite" Width="30"></TextBlock>
+
+                            </DataGridTextColumn.Header>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Width="90" Header="Imię" Binding="{Binding Path=Imie}" FontSize="15">
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Width="90" Header="Nazwisko" Binding="{Binding Path=Nazwisko}" FontSize="15"></DataGridTextColumn>
+                        <DataGridTextColumn Width="160" Header="Czas rozegrania" Binding="{Binding Path=CzasRozegrania}" FontSize="12"></DataGridTextColumn>
+                        <DataGridTextColumn Width="80" Header="Wygrana" Binding="{Binding Path=WartoscWygranej}" FontSize="12"></DataGridTextColumn>
+                        <DataGridTextColumn Width="60" Header="Zakład" Binding="{Binding Path=PostawionaGotowka}" FontSize="12"></DataGridTextColumn>
+                        <DataGridTextColumn Width="250" Header="Zaznaczone liczby" Binding="{Binding Path=TrafioneLiczby}" FontSize="12"></DataGridTextColumn>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Grid>
+            <Grid x:Name="Zasadygry" Margin="0,32,0,0" Visibility="Collapsed">
+                <StackPanel Height="500" Width="450" Margin="25,16,517,21"  Style="{StaticResource stylOkienek}">
+                    <TextBlock Margin="10,5" TextWrapping="Wrap" Text="1" FontSize="18" Style="{StaticResource stylTb}"></TextBlock>
+                    <Border BorderBrush="Azure" BorderThickness="2">
+                        <TextBlock Margin="5,5" TextWrapping="Wrap" Text="W pierwszym kroku twoim zadaniem jest wybrać wielkość zakładu który postawisz pod rocpoczęcie swojej gry co będzie wpływało na wielkość mnożnika wygranej podczas trafienia na kolor.W tym kroku również konieczne jest wybranie koloru który to będzie wpływał na rozgrywkę w taki sposób iż jeżeli liczba którą trafisz będzie miała kolor przez ciebie wybrany aktywuje się mnożnik wygranej dla tej liczby" FontSize="18" Style="{StaticResource stylTb}"></TextBlock>
+
+                    </Border>
+
+                    <TextBlock Margin="10,5" TextWrapping="Wrap" Text="2" FontSize="18" Style="{StaticResource stylTb}"></TextBlock>
+                    <Border  BorderBrush="Azure" BorderThickness="2">
+                        <TextBlock Margin="5,5" TextWrapping="Wrap" Text="Kolejnym krokiem jest losowanie 16 liczbz pośród puli 50 liczb(0-49) jako liczb wylosowanych przez użytkownika oraz 32 do których będzie odnosić się sprawdzanie wygranej" FontSize="18" Style="{StaticResource stylTb}"></TextBlock>
+
+                    </Border>
+                </StackPanel>
+                <StackPanel Height="500" Width="450" Margin="517,16,25,21" Style="{StaticResource stylOkienek}">
+                    <TextBlock Margin="10,5" TextWrapping="Wrap" Text="3" FontSize="18" Style="{StaticResource stylTb}"></TextBlock>
+                    <Border BorderBrush="Azure" BorderThickness="2">
+                        <TextBlock Margin="5,5" TextWrapping="Wrap" Text="Każa liczba wylosowana będzie porównywana do liczb wylosowanych z 2 zestawów.W przypadku jeżeli w jednym z tabel znajduje się wylosowana przez ciebie liczba do twojej wygranej dodawana jest wartość tej liczby lub w przypadku gdy liczba ta znajduje się w tabeli czerwonej wartość zostaje odjęta.W przypadku gdy dana z jednej z dwóch tabel posiada taki sam kolor jak ten który został wybrany przez urzytkownika liczba wylosowana jest mnożona lub dzielona (w zależności od tabeli) przez mnożnik na który bezpośredni wpływ ma postawiona stawka." FontSize="18" Style="{StaticResource stylTb}"></TextBlock>
+
+                    </Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="MNDodatniuz" Style="{StaticResource stylTb}" HorizontalAlignment="Left" FontSize="19" Grid.Column="1" Grid.Row="0"></TextBlock>
+                        <TextBlock x:Name="MNUjemnyuz" Style="{StaticResource stylTb}" HorizontalAlignment="Left" FontSize="19"  Grid.Column="1" Grid.Row="1"></TextBlock>
+                        <TextBlock x:Name="KolorDodatniuz" Style="{StaticResource stylTb}" HorizontalAlignment="Left" FontSize="19"  Grid.Column="1" Grid.Row="2"></TextBlock>
+                        <TextBlock x:Name="KolorUjemnyuz" Style="{StaticResource stylTb}" HorizontalAlignment="Left" FontSize="19"  Grid.Column="1" Grid.Row="3"></TextBlock>
+                        
+                        <TextBlock FontSize="19" Style="{StaticResource stylTb}" Text="Mnoznik + Gry" Grid.Row="0"></TextBlock>
+                        <TextBlock FontSize="19" Style="{StaticResource stylTb}"  Text="Mnoznik - Gry" Grid.Row="1"></TextBlock>
+                        <TextBlock FontSize="19" Style="{StaticResource stylTb}"  Text="Mnoznik kolor + " Grid.Row="2"></TextBlock>
+                        <TextBlock FontSize="19" Style="{StaticResource stylTb}"  Text="Mnoznik kolor -" Grid.Row="3"></TextBlock>
+                        
+                        
+                    </Grid>
+                    
+                </StackPanel>
+                <StackPanel>
+                    
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="Gra" Margin="0,32,0,0" Visibility="Collapsed">
+                <Grid  Margin="7,4,520,5" >
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Background" Value="DarkGoldenrod"></Setter>
+
+                        </Style>
+
+                    </Grid.Resources>
+                    <Button x:Name="los" Content="Losuj!!!" Style="{StaticResource buttony}" Margin="21,235" Height="Auto" Width="Auto" FontSize="36" Click="Button_Click_2"  />
+                    <Button x:Name="pods1" Content="Podsumowanie" Style="{StaticResource buttony}" Margin="22,235,20,235" Height="Auto" Width="Auto" FontSize="36" Click="pods1_Click" Visibility="Collapsed"  />
+
+                    <Button  x:Name="kolorekwybrany" Height="60" Width="200" Content="Czerwony"  Margin="112,316,112,132">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Button}">
+
+                                <Style.Triggers>
+                                    <Trigger Property="Content" Value="Czerwony">
+                                        <Setter Property="Background" Value="DarkRed"></Setter>
+                                    </Trigger>
+                                    <Trigger Property="Content" Value="Niebieski">
+                                        <Setter Property="Background" Value="DarkBlue"></Setter>
+                                    </Trigger>
+
+
+                                    <Trigger Property="Content" Value="Zielony">
+                                        <Setter Property="Background" Value="DarkGreen"></Setter>
+                                    </Trigger>
+                                    <Trigger Property="Content" Value="Brązowy">
+                                        <Setter Property="Background" Value="Brown"></Setter>
+                                    </Trigger>
+                                    <Trigger Property="Content" Value="Pomarańczowy">
+                                        <Setter Property="Background" Value="DarkOrange"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Ellipse Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}" Width="{TemplateBinding Width}" Fill="{TemplateBinding Background}"></Ellipse>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <ContentPresenter.ContentTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Style="{StaticResource stylTb}" Foreground="DimGray" Text="Wybrany kolor"></TextBlock>
+                                                    <Separator></Separator>
+                                                    <TextBlock Style="{StaticResource stylTb}" Text="{Binding}" Foreground="White" HorizontalAlignment="Center"></TextBlock>
+                                                </StackPanel>
+
+                                            </DataTemplate>
+                                        </ContentPresenter.ContentTemplate>
+                                    </ContentPresenter>
+
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <WrapPanel Margin="46,16,6,254">
+                        <WrapPanel.Resources>
+                            <Style TargetType="Grid">
+                                <Setter Property="Background"  Value="Azure"></Setter>
+                            </Style>
+
+                        </WrapPanel.Resources>
+
+                        <Grid  Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l1"  HorizontalAlignment="Center" Foreground="Black"  VerticalAlignment="Center" FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="15,0,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l2"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="15,0,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l3"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="15,0,0,0"  Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l4"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="15,0,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l5"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="15,0,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l6"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="0,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l7"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l8"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}"/>
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l9"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l10"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l11"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l12"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="0,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l13"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l14"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l15"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l16"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l17"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+                        <Grid Margin="15,10,0,0" Height="50" Width="50" >
+                            <Ellipse Height="50" Width="50" Fill="#FFC3B7B7"/>
+                            <TextBlock x:Name="l18"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="15" Style="{StaticResource stylTb}" />
+
+
+                        </Grid>
+
+                    </WrapPanel>
+
+                </Grid>
+
+                <Grid   Margin="473,4,6,5">
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Background" Value="DarkCyan"></Setter>
+
+                        </Style>
+
+                    </Grid.Resources>
+                    <StackPanel Height="260" Width="400" Style="{StaticResource stylPaneli}" Margin="63,1,50,267" >
+
+                        <TextBlock Text="Zestaw 1" Style="{StaticResource stylTb}" HorizontalAlignment="Center" FontSize="30" Foreground="#FF16723C"></TextBlock>
+                        <UniformGrid Margin="0,10" Height="213">
+                            <TextBlock x:Name="Z1tb1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb4" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb7" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb8" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb10" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb11" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black"  Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb13" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z1tb16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                        </UniformGrid>
+                    </StackPanel>
+                    <StackPanel Height="260" Style="{StaticResource stylPaneli}" Margin="64,268,49,0" Width="400" >
+                        <TextBlock Text="Zestaw 2" Style="{StaticResource stylTb}" HorizontalAlignment="Center" FontSize="30" Foreground="#FFA01111"></TextBlock>
+                        <UniformGrid Margin="0,10" Height="213">
+                            <TextBlock x:Name="Z2tb1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"    Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb3" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black"  Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb4" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black"  Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb6" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb7" HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black"  Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb8" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb9" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb10" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb13" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                            <TextBlock x:Name="Z2tb16" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"   Text="3" FontSize="24" Style="{StaticResource stylTb}"></TextBlock>
+                        </UniformGrid>
+                    </StackPanel>
+
+
+                </Grid>
+
+            </Grid>
+            <StackPanel x:Name="wynikiGry" Background="#FFBFAFAF" Margin="268,226,424,189" Visibility="Collapsed">
+                <TextBlock Margin="0,10,0,0" Text="Twoja wygrana!" FontSize="30" HorizontalAlignment="Center" Style="{StaticResource stylTb}"></TextBlock>
+                <TextBlock x:Name="wynikwygranej" FontSize="30" HorizontalAlignment="Center" Text="0 PLN" Foreground="White"></TextBlock>
+                <Button Content="Zakończ" Style="{StaticResource buttony}" Click="Button_Click_3"></Button>
+            </StackPanel>
+            <Grid></Grid>
+
+
+
+            <Grid  Style="{StaticResource stylOkienek}" Height="30" VerticalAlignment="Top">
+                <WrapPanel Margin="0,0,720,0">
+                    <Image Source="ss.png"></Image>
+                    <TextBlock  x:Name="WyswietlKase" Margin="5" VerticalAlignment="Center" Text="{Binding  StringFormat={}{0} Zł,Path=Fundusze}"  FontSize="20" Style="{StaticResource stylTb}"></TextBlock>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                    <Button Margin="5,0,0,0"    Content="Graj" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_4"/>
+                    <Button Margin="5,0,0,0"    Content="Top" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_6"/>
+                    <Button Margin="5,0,0,0"   Content="Historia gier" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_7"/>
+                    <Button Margin="5,0,0,0"    Content="Zasady gry" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_8"/>
+                    <Button Margin="5,0,0,0"   Content="Portfel" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_5"/>
+                    <Button Margin="5,0,0,0"   Content="Profil" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_11" />
+                    <Button Margin="5,0,0,0"   Content="Wyloguj" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_14"  />
+
+                </WrapPanel>
+
+
+            </Grid>
+
+
+
+
+
+        </Grid>
+        <Grid x:Name="main3" Style="{StaticResource stylPaneli}" Visibility="Collapsed">
+            <Grid x:Name="panel"  Style="{StaticResource stylOkienek}" Height="30" VerticalAlignment="Top">
+
+                <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                    <Button Margin="5,0,0,0"    Content="Dane gry" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_22" />
+                    <Button Margin="5,0,0,0"    Content="Użytkownicy" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_20" />
+                    <Button Margin="5,0,0,0"    Content="Lsita zmian" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_23"  />
+
+                    <Button Margin="5,0,0,0"   Content="Wyloguj" Style="{StaticResource buttony2}" Height="28"  Width="100" Click="Button_Click_14"  />
+
+                </WrapPanel>
+
+
+
+            </Grid>
+
+            <Grid x:Name="ListaUzytkownikow" Margin="0,32,0,0">
+                <Border BorderBrush="#FF8F9338" BorderThickness="2" Width="150" Height="270" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="10,200,0,0"  >
+                    <TextBlock Margin="5,5"  TextWrapping="Wrap" Style="{StaticResource stylTb}" Text="Edytuj dane użytkowników przez najechanie na wiersz oraz wejście w dowolną komórkę w celu edycji.Wprowadzone zmiany zostaną potwiedzone po naciścięciu przycisku (Zatwierdź zmiany)." FontSize="14"/>
+
+                </Border>
+
+                <Grid Height="500" Margin="360,20,14,17">
+                    <ScrollViewer Margin="0,0,9,20">
+                        <DataGrid x:Name="ListaUzytkownikowDG"  AutoGenerateColumns="False" CanUserAddRows="False"     CanUserResizeRows="False" GridLinesVisibility="None"  Background="AntiqueWhite" RowBackground="WhiteSmoke" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn  Header="Id" Width="50" Binding="{Binding Path=Id}" FontSize="12"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Login" Width="70" Binding="{Binding Path=Login}" FontSize="12"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Password" Width="70" Binding="{Binding Path=Password}" FontSize="12"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Email" Width="100" Binding="{Binding Path=Email}" FontSize="12"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Uprawnienia" Width="100" Binding="{Binding Path=Uprawnienia}" FontSize="12"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Pytanie pomocnicze" Binding="{Binding Path=PytPomocnicze}" FontSize="12"></DataGridTextColumn>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </ScrollViewer>
+                </Grid>
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10" Width="150" Height="150"  Style="{StaticResource stylOkienek}">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                            <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Height="50" Content="Dodaj użytkownika" Click="Button_Click_18" ></Button>
+                    <Button Height="50" Content="Usuń użytkwonika" Click="Button_Click_16" ></Button>
+                    <Button Height="50" Content="Zatwiedź zmiany" Click="Button_Click_15" ></Button>
+
+
+
+                </StackPanel>
+                <Grid Style="{StaticResource stylOkienek}" Width="600" Margin="196,109,196,177" x:Name="dodawanieUseraAdmin" Visibility="Collapsed">
+
+                    <Grid    Opacity="0.6"  >
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="280"></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+
+
+
+
+
+
+
+
+
+
+                        </Grid.RowDefinitions>
+
+
+                        <TextBlock  Grid.Row="2" Grid.Column="0" Text="Nick:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                        <TextBlock  Grid.Row="4" Grid.Column="0" Text="Password:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                        <TextBlock  Grid.Row="6" Grid.Column="0" Text="Email:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                        <TextBlock x:Name="bladDodawaniaUseraAdmin"  Grid.Row="8" Grid.Column="1" Text="Podano błędne dane(zbyt krótke lub użytkowinik istnieje)" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="10" Foreground="#FFB91010" Visibility="Collapsed" />
+
+                        <TextBox x:Name="NickdodawanieAdmin"  Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                        <TextBox x:Name="PassworddodawanieAdmin"    Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                        <TextBox x:Name="EmaildodawanieAdmin"     Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+
+
+                    </Grid>
+                    <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="0,0,20,0">
+                        <Button Height="50" Width="150" Grid.Row="4"  Style="{StaticResource buttony2}" Content="Dodaj" Click="Button_Click_19" ></Button>
+                        <Button Height="50" Width="150" Grid.Row="4"  Style="{StaticResource buttony2}" Content="Wyjdź" Margin="0,10" Click="Button_Click_17"  ></Button>
+
+                    </StackPanel>
+
+
+                </Grid>
+
+
+
+
+            </Grid>
+            <Grid x:Name="ListaZmian" Margin="0,32,0,0" Visibility="Collapsed">
+                <Button Height="30" Width="80" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource buttony2}"  Margin="5,5,15,0" Click="Button_Click_24" Content="Zapisz">
+                    <Button.ToolTip>
+                        <TextBlock Text="Zapisz do pliku"></TextBlock>
+                    </Button.ToolTip>
+                </Button>
+                <ScrollViewer Margin="444,43,16,25">
+                    <DataGrid x:Name="listaZmianZasad" IsReadOnly="True"     CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" GridLinesVisibility="None"  CanUserResizeRows="False" Background="AntiqueWhite" RowBackground="WhiteSmoke" HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id"  Width="70" Binding="{Binding Path=Id_pracownika_zmieniajacego}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Kolor D" Width="70" Binding="{Binding Path=Mnoznik_Kolory_dodatnie}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Kolor U" Width="70" Binding="{Binding Path=Mnoznik_Kolory_ujemne}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Kolor BonusD" Width="90" Binding="{Binding Path=Mnoznik_Gry_dodatnie}" ></DataGridTextColumn>
+                            <DataGridTextColumn Header="Kolor BonusU" Width="90" Binding="{Binding Path=Mnoznik_Gry_ujemne}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Data zmiany" Width="120" Binding="{Binding Path=Data_zmiany}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Opis_zmiany}"></TextBlock>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                        
+                    </DataGrid>
+                </ScrollViewer>
+            </Grid>
+            <Grid x:Name="DanedzialaniaGry" Margin="0,32,0,0" Visibility="Collapsed" >
+
+                <Grid x:Name="ZmianaZasadGryDef" Visibility="{Binding ElementName=PrzyciskModyfikacjiDanych, Path=IsChecked, Converter={StaticResource konwerterBoolVisi }}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="290"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="97"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Zmiana at1" Style="{StaticResource stylTb}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Height="24" Margin="40,13" Width="120"></TextBlock>
+                    <TextBlock Text="Zmiana at2" Style="{StaticResource stylTb}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Height="24" Margin="40,13" Width="120"></TextBlock>
+                    <TextBlock Text="Zmiana at3" Style="{StaticResource stylTb}" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Height="24" Margin="40,13" Width="120"></TextBlock>
+                    <TextBlock Text="Zmiana at4" Style="{StaticResource stylTb}" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Height="24" Margin="40,13" Width="120"></TextBlock>
+
+                    <TextBlock HorizontalAlignment="Center" Text="Opis i cel zmiany" Style="{StaticResource stylTb}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Center"  FontSize="20" Height="24"  Width="206"></TextBlock>
+
+                    <TextBox x:Name="zmianaat1"  Margin="10,12"  Grid.Row="3" Grid.Column="0" Style="{StaticResource stylTbBox}" VerticalAlignment="Center" FontSize="20" Height="26"></TextBox>
+                    <TextBox x:Name="zmianaat2"  Margin="10,12"  Grid.Row="3" Grid.Column="1" Style="{StaticResource stylTbBox}" VerticalAlignment="Center" FontSize="20" Height="26"></TextBox>
+                    <TextBox x:Name="zmianaat3"  Margin="10,12"  Grid.Row="3" Grid.Column="2" Style="{StaticResource stylTbBox}" VerticalAlignment="Center" FontSize="20" Height="26"></TextBox>
+                    <TextBox x:Name="zmianaat4"  Margin="10,12"  Grid.Row="3" Grid.Column="3" Style="{StaticResource stylTbBox}" VerticalAlignment="Center" FontSize="20" Height="26"></TextBox>
+                    <TextBox x:Name="zmianaaOpis"  TextWrapping="Wrap"  Margin="0,0,30,0" Height="200"  Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Grid.Column="3" Style="{StaticResource stylTbBox}"  FontSize="20" ></TextBox>
+                    <TextBlock x:Name="niepoprawneDaneZmiany"  VerticalAlignment="Top" Grid.Column="4" Grid.Row="4"   Height="20"  Text="Niepoprawne dane" Foreground="#FFAC2121" Margin="50,0,38,0" Visibility="Collapsed"/>
+                    <Button Grid.Column="4" Grid.Row="4" Margin="50,26,50,21" Style="{StaticResource buttony}" Height="40" Width="100" Content="Potwierdź" Click="Button_Click_21"></Button>
+
+
+                </Grid>
+                <Grid Height="300" Width="550" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10" Style="{StaticResource stylOkienek}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+
+
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Background" Value="NavajoWhite"></Setter>
+                            <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                        </Style>
+
+                    </Grid.Resources>
+                    <TextBlock Grid.Row="0" Grid.Column="0 " VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="5" Text="Mnożnik koloru dodającego(at1):"  FontSize="15">
+
+                    </TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0 " VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="5"  Text="Mnożnik koloru odejmującego(at2):"  FontSize="15"></TextBlock>
+                    <TextBlock Grid.Row="2" Grid.Column="0 " VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="5"  Text="Mnożnik dodatkowy dodający(at3):" FontSize="15"></TextBlock>
+                    <TextBlock Grid.Row="3" Grid.Column="0 " VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="5"  Text="Mnożnik dodatkowy odejmujący(at4):"  FontSize="15"></TextBlock>
+
+                    <TextBlock Text="{Binding}" x:Name="zmianaMnoznika1" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource stylTb}" FontSize="20"></TextBlock>
+                    <TextBlock Text="{Binding}" x:Name="zmianaMnoznika2" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource stylTb}" FontSize="20"></TextBlock>
+                    <TextBlock Text="{Binding}" x:Name="zmianaMnoznika3" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource stylTb}" FontSize="20"></TextBlock>
+                    <TextBlock Text="{Binding}" x:Name="zmianaMnoznika4" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource stylTb}" FontSize="20"></TextBlock>
+
+                    <ToggleButton x:Name="PrzyciskModyfikacjiDanych"   HorizontalAlignment="Left" Width="200" Margin="10,0,0,11" Grid.Row="4" VerticalAlignment="Bottom" Content="Modyfikuj ręcznie" Background="BurlyWood" BorderBrush="#FF594545" FontFamily="Global Monospace" FontSize="18" Unchecked="PrzyciskModyfikacjiDanych_Unchecked">
+
+                    </ToggleButton>
+                    <ToggleButton  Width="200" Margin="160,0,0,11" Grid.Row="4" VerticalAlignment="Bottom" Content="Wczytaj z pliku" Background="BurlyWood" BorderBrush="#FF594545"  FontFamily="Global Monospace" FontSize="18" Checked="ToggleButton_Checked" >
+                        <ToggleButton.ToolTip>
+                            <StackPanel>
+                                <TextBlock Text="Podaj kolejno:" ></TextBlock>
+                                <TextBlock Text="Mnożnik dodatni,Mnożnik ujemny,Mnożnik kolor dodatni,Mnożnik kolor ujemny,Opis"></TextBlock>
+
+                            </StackPanel>
+                        </ToggleButton.ToolTip>
+
+                    </ToggleButton>
+
+
+
+                </Grid>
+
+
+
+
+
+            </Grid>
+
+
+
+        </Grid>
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BazaGryHazardoweModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BazaGryHazardoweEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Konto" EntityType="BazaGryHazardoweModel.Konto" />
+    <EntitySet Name="Visa" EntityType="BazaGryHazardoweModel.Visa" />
+    <EntitySet Name="KontaBankowe" EntityType="BazaGryHazardoweModel.KontaBankowe" />
+    <EntitySet Name="Wyplaty" EntityType="BazaGryHazardoweModel.Wyplaty" />
+    <AssociationSet Name="FK_Wyplaty_ToTable" Association="BazaGryHazardoweModel.FK_Wyplaty_ToTable">
+      <End Role="Konto" EntitySet="Konto" />
+      <End Role="Wyplaty" EntitySet="Wyplaty" />
+    </AssociationSet>
+    <EntitySet Name="Wplaty" EntityType="BazaGryHazardoweModel.Wplaty" />
+    <AssociationSet Name="FK_Wplaty_ToTable" Association="BazaGryHazardoweModel.FK_Wplaty_ToTable">
+      <End Role="Konto" EntitySet="Konto" />
+      <End Role="Wplaty" EntitySet="Wplaty" />
+    </AssociationSet>
+    <EntitySet Name="PaySafe" EntityType="BazaGryHazardoweModel.PaySafe" />
+    <EntitySet Name="RozegraneeGry" EntityType="BazaGryHazardoweModel.RozegraneeGry" />
+    <AssociationSet Name="FK_Table_ToTable" Association="BazaGryHazardoweModel.FK_Table_ToTable">
+      <End Role="Konto" EntitySet="Konto" />
+      <End Role="RozegraneeGry" EntitySet="RozegraneeGry" />
+    </AssociationSet>
+    <EntitySet Name="ZasadyGry" EntityType="BazaGryHazardoweModel.ZasadyGry" />
+    <AssociationSet Name="FK_ZasadyGry_ToTable" Association="BazaGryHazardoweModel.FK_ZasadyGry_ToTable">
+      <End Role="Konto" EntitySet="Konto" />
+      <End Role="ZasadyGry" EntitySet="ZasadyGry" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Konto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Funds" Type="Double" />
+    <NavigationProperty Name="Wyplaty" Relationship="BazaGryHazardoweModel.FK_Wyplaty_ToTable" FromRole="Konto" ToRole="Wyplaty" />
+    <NavigationProperty Name="Wplaty" Relationship="BazaGryHazardoweModel.FK_Wplaty_ToTable" FromRole="Konto" ToRole="Wplaty" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hobby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RozegraneeGry" Relationship="BazaGryHazardoweModel.FK_Table_ToTable" FromRole="Konto" ToRole="RozegraneeGry" />
+    <Property Name="O_sobie" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PytPomocnicze" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Uprawnienia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ZasadyGry" Relationship="BazaGryHazardoweModel.FK_ZasadyGry_ToTable" FromRole="Konto" ToRole="ZasadyGry" />
+  </EntityType>
+  <EntityType Name="Visa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nr_karty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Kod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Imie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Stan_konta" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KontaBankowe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nr_konta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nazwa_banku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Imie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Stan_Konta" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wyplaty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Data_wyplaty" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Wielkosc_wyplaty" Type="Double" Nullable="false" />
+    <Property Name="Nr_konta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nazwa_banku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Opis" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id_wyplacajacego" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_Wyplaty_ToTable" FromRole="Wyplaty" ToRole="Konto" />
+  </EntityType>
+  <Association Name="FK_Wyplaty_ToTable">
+    <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+    <End Type="BazaGryHazardoweModel.Wyplaty" Role="Wyplaty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wyplaty">
+        <PropertyRef Name="Id_wyplacajacego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Wplaty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Data_wpłaty" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Kwota_wplaty" Type="Double" Nullable="false" />
+    <Property Name="Sposob_platnosci" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_wplacajocego" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_Wplaty_ToTable" FromRole="Wplaty" ToRole="Konto" />
+  </EntityType>
+  <Association Name="FK_Wplaty_ToTable">
+    <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+    <End Type="BazaGryHazardoweModel.Wplaty" Role="Wplaty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Wplaty">
+        <PropertyRef Name="ID_wplacajocego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PaySafe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kod_aktywujacy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Wielkosc_doladowania" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RozegraneeGry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CzasRozegrania" Type="DateTime" Precision="3" />
+    <Property Name="WartoscWygranej" Type="Double" />
+    <Property Name="PostawionaGotowka" Type="Double" />
+    <Property Name="TrafioneLiczby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id_rozgrywajacego" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_Table_ToTable" FromRole="RozegraneeGry" ToRole="Konto" />
+  </EntityType>
+  <Association Name="FK_Table_ToTable">
+    <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+    <End Type="BazaGryHazardoweModel.RozegraneeGry" Role="RozegraneeGry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RozegraneeGry">
+        <PropertyRef Name="Id_rozgrywajacego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ZasadyGry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mnoznik_Kolory_dodatnie" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Mnoznik_Kolory_ujemne" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Mnoznik_Gry_dodatnie" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Mnoznik_Gry_ujemne" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Opis_zmiany" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Id_pracownika_zmieniajacego" Type="Int32" Nullable="false" />
+    <Property Name="Data_zmiany" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_ZasadyGry_ToTable" FromRole="ZasadyGry" ToRole="Konto" />
+  </EntityType>
+  <Association Name="FK_ZasadyGry_ToTable">
+    <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+    <End Type="BazaGryHazardoweModel.ZasadyGry" Role="ZasadyGry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZasadyGry">
+        <PropertyRef Name="Id_pracownika_zmieniajacego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

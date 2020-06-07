@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BazaGryHazardoweModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KontaBankowe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nr_konta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwa_banku" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stan_Konta" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Konto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Funds" Type="float" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hobby" Type="nvarchar" MaxLength="50" />
+          <Property Name="O_sobie" Type="nvarchar" MaxLength="200" />
+          <Property Name="PytPomocnicze" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uprawnienia" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaySafe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod_aktywujacy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Wielkosc_doladowania" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RozegraneeGry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CzasRozegrania" Type="datetime" />
+          <Property Name="WartoscWygranej" Type="float" />
+          <Property Name="PostawionaGotowka" Type="float" />
+          <Property Name="TrafioneLiczby" Type="nvarchar" MaxLength="100" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_rozgrywajacego" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Visa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nr_karty" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Stan_konta" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wplaty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_wpłaty" Type="datetime" Nullable="false" />
+          <Property Name="Kwota_wplaty" Type="float" Nullable="false" />
+          <Property Name="Sposob_platnosci" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_wplacajocego" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wyplaty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_wyplaty" Type="datetime" Nullable="false" />
+          <Property Name="Wielkosc_wyplaty" Type="float" Nullable="false" />
+          <Property Name="Nr_konta" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwa_banku" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_wyplacajacego" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZasadyGry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mnoznik Kolory_dodatnie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mnoznik Kolory_ujemne" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mnoznik Gry_dodatnie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mnoznik Gry_ujemne" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis zmiany" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Id_pracownika_zmieniajacego" Type="int" Nullable="false" />
+          <Property Name="Data_zmiany" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Table_ToTable">
+          <End Role="Konto" Type="Self.Konto" Multiplicity="1" />
+          <End Role="RozegraneeGry" Type="Self.RozegraneeGry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RozegraneeGry">
+              <PropertyRef Name="Id_rozgrywajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wplaty_ToTable">
+          <End Role="Konto" Type="Self.Konto" Multiplicity="1" />
+          <End Role="Wplaty" Type="Self.Wplaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wplaty">
+              <PropertyRef Name="ID_wplacajocego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wyplaty_ToTable">
+          <End Role="Konto" Type="Self.Konto" Multiplicity="1" />
+          <End Role="Wyplaty" Type="Self.Wyplaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wyplaty">
+              <PropertyRef Name="Id_wyplacajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZasadyGry_ToTable">
+          <End Role="Konto" Type="Self.Konto" Multiplicity="1" />
+          <End Role="ZasadyGry" Type="Self.ZasadyGry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ZasadyGry">
+              <PropertyRef Name="Id_pracownika_zmieniajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BazaGryHazardoweModelStoreContainer">
+          <EntitySet Name="KontaBankowe" EntityType="Self.KontaBankowe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konto" EntityType="Self.Konto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaySafe" EntityType="Self.PaySafe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RozegraneeGry" EntityType="Self.RozegraneeGry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visa" EntityType="Self.Visa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wplaty" EntityType="Self.Wplaty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wyplaty" EntityType="Self.Wyplaty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZasadyGry" EntityType="Self.ZasadyGry" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="RozegraneeGry" EntitySet="RozegraneeGry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wplaty_ToTable" Association="Self.FK_Wplaty_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="Wplaty" EntitySet="Wplaty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wyplaty_ToTable" Association="Self.FK_Wyplaty_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="Wyplaty" EntitySet="Wyplaty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZasadyGry_ToTable" Association="Self.FK_ZasadyGry_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="ZasadyGry" EntitySet="ZasadyGry" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BazaGryHazardoweModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BazaGryHazardoweEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Konto" EntityType="BazaGryHazardoweModel.Konto" />
+          <EntitySet Name="Visa" EntityType="BazaGryHazardoweModel.Visa" />
+          <EntitySet Name="KontaBankowe" EntityType="BazaGryHazardoweModel.KontaBankowe" />
+          <EntitySet Name="Wyplaty" EntityType="BazaGryHazardoweModel.Wyplaty" />
+          <AssociationSet Name="FK_Wyplaty_ToTable" Association="BazaGryHazardoweModel.FK_Wyplaty_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="Wyplaty" EntitySet="Wyplaty" />
+          </AssociationSet>
+          <EntitySet Name="Wplaty" EntityType="BazaGryHazardoweModel.Wplaty" />
+          <AssociationSet Name="FK_Wplaty_ToTable" Association="BazaGryHazardoweModel.FK_Wplaty_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="Wplaty" EntitySet="Wplaty" />
+          </AssociationSet>
+          <EntitySet Name="PaySafe" EntityType="BazaGryHazardoweModel.PaySafe" />
+          <EntitySet Name="RozegraneeGry" EntityType="BazaGryHazardoweModel.RozegraneeGry" />
+          <AssociationSet Name="FK_Table_ToTable" Association="BazaGryHazardoweModel.FK_Table_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="RozegraneeGry" EntitySet="RozegraneeGry" />
+          </AssociationSet>
+          <EntitySet Name="ZasadyGry" EntityType="BazaGryHazardoweModel.ZasadyGry" />
+          <AssociationSet Name="FK_ZasadyGry_ToTable" Association="BazaGryHazardoweModel.FK_ZasadyGry_ToTable">
+            <End Role="Konto" EntitySet="Konto" />
+            <End Role="ZasadyGry" EntitySet="ZasadyGry" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Konto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Funds" Type="Double" />
+          <NavigationProperty Name="Wyplaty" Relationship="BazaGryHazardoweModel.FK_Wyplaty_ToTable" FromRole="Konto" ToRole="Wyplaty" />
+          <NavigationProperty Name="Wplaty" Relationship="BazaGryHazardoweModel.FK_Wplaty_ToTable" FromRole="Konto" ToRole="Wplaty" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hobby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RozegraneeGry" Relationship="BazaGryHazardoweModel.FK_Table_ToTable" FromRole="Konto" ToRole="RozegraneeGry" />
+          <Property Name="O_sobie" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PytPomocnicze" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uprawnienia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ZasadyGry" Relationship="BazaGryHazardoweModel.FK_ZasadyGry_ToTable" FromRole="Konto" ToRole="ZasadyGry" />
+        </EntityType>
+        <EntityType Name="Visa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nr_karty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stan_konta" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KontaBankowe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nr_konta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwa_banku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stan_Konta" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wyplaty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_wyplaty" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Wielkosc_wyplaty" Type="Double" Nullable="false" />
+          <Property Name="Nr_konta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwa_banku" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_wyplacajacego" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_Wyplaty_ToTable" FromRole="Wyplaty" ToRole="Konto" />
+        </EntityType>
+        <Association Name="FK_Wyplaty_ToTable">
+          <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+          <End Type="BazaGryHazardoweModel.Wyplaty" Role="Wyplaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wyplaty">
+              <PropertyRef Name="Id_wyplacajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Wplaty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Data_wpłaty" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Kwota_wplaty" Type="Double" Nullable="false" />
+          <Property Name="Sposob_platnosci" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_wplacajocego" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_Wplaty_ToTable" FromRole="Wplaty" ToRole="Konto" />
+        </EntityType>
+        <Association Name="FK_Wplaty_ToTable">
+          <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+          <End Type="BazaGryHazardoweModel.Wplaty" Role="Wplaty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wplaty">
+              <PropertyRef Name="ID_wplacajocego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PaySafe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod_aktywujacy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Wielkosc_doladowania" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RozegraneeGry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CzasRozegrania" Type="DateTime" Precision="3" />
+          <Property Name="WartoscWygranej" Type="Double" />
+          <Property Name="PostawionaGotowka" Type="Double" />
+          <Property Name="TrafioneLiczby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_rozgrywajacego" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_Table_ToTable" FromRole="RozegraneeGry" ToRole="Konto" />
+        </EntityType>
+        <Association Name="FK_Table_ToTable">
+          <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+          <End Type="BazaGryHazardoweModel.RozegraneeGry" Role="RozegraneeGry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RozegraneeGry">
+              <PropertyRef Name="Id_rozgrywajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ZasadyGry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mnoznik_Kolory_dodatnie" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mnoznik_Kolory_ujemne" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mnoznik_Gry_dodatnie" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mnoznik_Gry_ujemne" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Opis_zmiany" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Id_pracownika_zmieniajacego" Type="Int32" Nullable="false" />
+          <Property Name="Data_zmiany" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Konto" Relationship="BazaGryHazardoweModel.FK_ZasadyGry_ToTable" FromRole="ZasadyGry" ToRole="Konto" />
+        </EntityType>
+        <Association Name="FK_ZasadyGry_ToTable">
+          <End Type="BazaGryHazardoweModel.Konto" Role="Konto" Multiplicity="1" />
+          <End Type="BazaGryHazardoweModel.ZasadyGry" Role="ZasadyGry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ZasadyGry">
+              <PropertyRef Name="Id_pracownika_zmieniajacego" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BazaGryHazardoweModelStoreContainer" CdmEntityContainer="BazaGryHazardoweEntities">
+          <EntitySetMapping Name="Konto">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.Konto">
+              <MappingFragment StoreEntitySet="Konto">
+                <ScalarProperty Name="Uprawnienia" ColumnName="Uprawnienia" />
+                <ScalarProperty Name="PytPomocnicze" ColumnName="PytPomocnicze" />
+                <ScalarProperty Name="O_sobie" ColumnName="O_sobie" />
+                <ScalarProperty Name="Hobby" ColumnName="Hobby" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Funds" ColumnName="Funds" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visa">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.Visa">
+              <MappingFragment StoreEntitySet="Visa">
+                <ScalarProperty Name="Stan_konta" ColumnName="Stan_konta" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nr_karty" ColumnName="Nr_karty" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KontaBankowe">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.KontaBankowe">
+              <MappingFragment StoreEntitySet="KontaBankowe">
+                <ScalarProperty Name="Stan_Konta" ColumnName="Stan_Konta" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwa_banku" ColumnName="Nazwa_banku" />
+                <ScalarProperty Name="Nr_konta" ColumnName="Nr_konta" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wyplaty">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.Wyplaty">
+              <MappingFragment StoreEntitySet="Wyplaty">
+                <ScalarProperty Name="Id_wyplacajacego" ColumnName="Id_wyplacajacego" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Nazwa_banku" ColumnName="Nazwa_banku" />
+                <ScalarProperty Name="Nr_konta" ColumnName="Nr_konta" />
+                <ScalarProperty Name="Wielkosc_wyplaty" ColumnName="Wielkosc_wyplaty" />
+                <ScalarProperty Name="Data_wyplaty" ColumnName="Data_wyplaty" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wplaty">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.Wplaty">
+              <MappingFragment StoreEntitySet="Wplaty">
+                <ScalarProperty Name="ID_wplacajocego" ColumnName="ID_wplacajocego" />
+                <ScalarProperty Name="Sposob_platnosci" ColumnName="Sposob_platnosci" />
+                <ScalarProperty Name="Kwota_wplaty" ColumnName="Kwota_wplaty" />
+                <ScalarProperty Name="Data_wpłaty" ColumnName="Data_wpłaty" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaySafe">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.PaySafe">
+              <MappingFragment StoreEntitySet="PaySafe">
+                <ScalarProperty Name="Wielkosc_doladowania" ColumnName="Wielkosc_doladowania" />
+                <ScalarProperty Name="Kod_aktywujacy" ColumnName="Kod_aktywujacy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RozegraneeGry">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.RozegraneeGry">
+              <MappingFragment StoreEntitySet="RozegraneeGry">
+                <ScalarProperty Name="Id_rozgrywajacego" ColumnName="Id_rozgrywajacego" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="TrafioneLiczby" ColumnName="TrafioneLiczby" />
+                <ScalarProperty Name="PostawionaGotowka" ColumnName="PostawionaGotowka" />
+                <ScalarProperty Name="WartoscWygranej" ColumnName="WartoscWygranej" />
+                <ScalarProperty Name="CzasRozegrania" ColumnName="CzasRozegrania" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZasadyGry">
+            <EntityTypeMapping TypeName="BazaGryHazardoweModel.ZasadyGry">
+              <MappingFragment StoreEntitySet="ZasadyGry">
+                <ScalarProperty Name="Data_zmiany" ColumnName="Data_zmiany" />
+                <ScalarProperty Name="Id_pracownika_zmieniajacego" ColumnName="Id_pracownika_zmieniajacego" />
+                <ScalarProperty Name="Opis_zmiany" ColumnName="Opis zmiany" />
+                <ScalarProperty Name="Mnoznik_Gry_ujemne" ColumnName="Mnoznik Gry_ujemne" />
+                <ScalarProperty Name="Mnoznik_Gry_dodatnie" ColumnName="Mnoznik Gry_dodatnie" />
+                <ScalarProperty Name="Mnoznik_Kolory_ujemne" ColumnName="Mnoznik Kolory_ujemne" />
+                <ScalarProperty Name="Mnoznik_Kolory_dodatnie" ColumnName="Mnoznik Kolory_dodatnie" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

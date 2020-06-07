@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BazaGryHazardoweModelStoreContainer" CdmEntityContainer="BazaGryHazardoweEntities">
+    <EntitySetMapping Name="Konto">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.Konto">
+        <MappingFragment StoreEntitySet="Konto">
+          <ScalarProperty Name="Uprawnienia" ColumnName="Uprawnienia" />
+          <ScalarProperty Name="PytPomocnicze" ColumnName="PytPomocnicze" />
+          <ScalarProperty Name="O_sobie" ColumnName="O_sobie" />
+          <ScalarProperty Name="Hobby" ColumnName="Hobby" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Funds" ColumnName="Funds" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visa">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.Visa">
+        <MappingFragment StoreEntitySet="Visa">
+          <ScalarProperty Name="Stan_konta" ColumnName="Stan_konta" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Kod" ColumnName="Kod" />
+          <ScalarProperty Name="Nr_karty" ColumnName="Nr_karty" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KontaBankowe">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.KontaBankowe">
+        <MappingFragment StoreEntitySet="KontaBankowe">
+          <ScalarProperty Name="Stan_Konta" ColumnName="Stan_Konta" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwa_banku" ColumnName="Nazwa_banku" />
+          <ScalarProperty Name="Nr_konta" ColumnName="Nr_konta" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wyplaty">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.Wyplaty">
+        <MappingFragment StoreEntitySet="Wyplaty">
+          <ScalarProperty Name="Id_wyplacajacego" ColumnName="Id_wyplacajacego" />
+          <ScalarProperty Name="Opis" ColumnName="Opis" />
+          <ScalarProperty Name="Nazwa_banku" ColumnName="Nazwa_banku" />
+          <ScalarProperty Name="Nr_konta" ColumnName="Nr_konta" />
+          <ScalarProperty Name="Wielkosc_wyplaty" ColumnName="Wielkosc_wyplaty" />
+          <ScalarProperty Name="Data_wyplaty" ColumnName="Data_wyplaty" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wplaty">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.Wplaty">
+        <MappingFragment StoreEntitySet="Wplaty">
+          <ScalarProperty Name="ID_wplacajocego" ColumnName="ID_wplacajocego" />
+          <ScalarProperty Name="Sposob_platnosci" ColumnName="Sposob_platnosci" />
+          <ScalarProperty Name="Kwota_wplaty" ColumnName="Kwota_wplaty" />
+          <ScalarProperty Name="Data_wpłaty" ColumnName="Data_wpłaty" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaySafe">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.PaySafe">
+        <MappingFragment StoreEntitySet="PaySafe">
+          <ScalarProperty Name="Wielkosc_doladowania" ColumnName="Wielkosc_doladowania" />
+          <ScalarProperty Name="Kod_aktywujacy" ColumnName="Kod_aktywujacy" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RozegraneeGry">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.RozegraneeGry">
+        <MappingFragment StoreEntitySet="RozegraneeGry">
+          <ScalarProperty Name="Id_rozgrywajacego" ColumnName="Id_rozgrywajacego" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="TrafioneLiczby" ColumnName="TrafioneLiczby" />
+          <ScalarProperty Name="PostawionaGotowka" ColumnName="PostawionaGotowka" />
+          <ScalarProperty Name="WartoscWygranej" ColumnName="WartoscWygranej" />
+          <ScalarProperty Name="CzasRozegrania" ColumnName="CzasRozegrania" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZasadyGry">
+      <EntityTypeMapping TypeName="BazaGryHazardoweModel.ZasadyGry">
+        <MappingFragment StoreEntitySet="ZasadyGry">
+          <ScalarProperty Name="Data_zmiany" ColumnName="Data_zmiany" />
+          <ScalarProperty Name="Id_pracownika_zmieniajacego" ColumnName="Id_pracownika_zmieniajacego" />
+          <ScalarProperty Name="Opis_zmiany" ColumnName="Opis zmiany" />
+          <ScalarProperty Name="Mnoznik_Gry_ujemne" ColumnName="Mnoznik Gry_ujemne" />
+          <ScalarProperty Name="Mnoznik_Gry_dodatnie" ColumnName="Mnoznik Gry_dodatnie" />
+          <ScalarProperty Name="Mnoznik_Kolory_ujemne" ColumnName="Mnoznik Kolory_ujemne" />
+          <ScalarProperty Name="Mnoznik_Kolory_dodatnie" ColumnName="Mnoznik Kolory_dodatnie" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

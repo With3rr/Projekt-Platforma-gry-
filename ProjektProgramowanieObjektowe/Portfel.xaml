@@ -1,0 +1,235 @@
+﻿<Window x:Class="ProjektProgramowanieObjektowe.Portfel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektProgramowanieObjektowe"
+        mc:Ignorable="d"
+        Title="Portfel" Height="400" Width="500" Closing="Window_Closing">
+    <Grid Style="{StaticResource stylPaneli}">
+
+        <Grid  Height="25" VerticalAlignment="Top" Style="{StaticResource stylOkienek}">
+            <WrapPanel HorizontalAlignment="Right">
+                <Button   Content="Main" Style="{StaticResource buttony2}" Height="25" Width="70" Click="Button_Click"></Button>
+                <Menu Margin="5,0,0,0"    Height="25" Width="85" >
+                    <MenuItem Header="Transakcje" HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="85" BorderBrush="Gray"  Style="{StaticResource mItem}">
+                        <MenuItem Header="Wpłaty" Style="{StaticResource mItem}" Click="MenuItem_Click_1"></MenuItem>
+                        <MenuItem Header="Wypłaty" Style="{StaticResource mItem}" Click="MenuItem_Click" ></MenuItem>
+                    </MenuItem>
+                </Menu>
+                <Button Margin="5,0,0,0"   Content="Wpłata" Style="{StaticResource buttony2}" Height="25" Width="70" Click="Button_Click_10"></Button>
+                <Button Margin="5,0,0,0"  Content="Wypłata" Style="{StaticResource buttony2}" Height="25" Width="70" Click="Button_Click_7"></Button>
+
+            </WrapPanel>
+
+
+
+        </Grid>
+        <StackPanel x:Name="StanKonta" Margin="0,25,0,0" >
+            <TextBlock Margin="0,40,0,0" Text="Dostępne środki" HorizontalAlignment="Center" Style="{StaticResource stylTb}" FontSize="30"></TextBlock>
+            <TextBlock Margin="0,20"  x:Name="WyswietlKase"  VerticalAlignment="Center" Text="{Binding  StringFormat={}{0} Zł,Path=Fundusze}"  FontSize="20" Style="{StaticResource stylTb}" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock  TextWrapping="Wrap" Margin="0,40,0,0" Text=" Wskazówka:Aby doładować środki skożystaj z jednej z metod wpłacania dostępnych z poziomu menu głównego" HorizontalAlignment="Center" Style="{StaticResource stylTb}" FontSize="20" Foreground="#FF5C9E9E"></TextBlock>
+
+
+        </StackPanel>
+        <Grid x:Name="Wplacanie"  Height="344" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <TextBlock Margin="5,5,5,309" Text="Wybierz metodę płatności" Style="{StaticResource stylTb}" FontSize="25"></TextBlock>
+            <UniformGrid Margin="0,64,0,32">
+                <Button Height="100" Width="200" >
+                    <Image Source="sasa.png" Width="198"></Image>
+                </Button>
+                <Button Height="100" Width="200" Click="Button_Click_1">
+                    <Image Source="logotype.png"></Image>
+                </Button>
+
+                <Button Height="100" Width="200">
+                    <Image Source="symbol (1).png"></Image>
+                </Button>
+                <Button Height="100" Width="200" Click="Button_Click_12">
+                    <Image Source="symbols (1).png"></Image>
+                </Button>
+
+            </UniformGrid>
+
+
+        </Grid>
+
+
+        <Grid x:Name="WyplataPieniedzy"  Height="344" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Grid    Opacity="0.6" Margin="0,0,0,4" >
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="280"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+
+
+
+
+
+
+
+                </Grid.RowDefinitions>
+
+
+                <TextBlock  Grid.Row="2" Grid.Column="0" Text="Nr. konta*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock  Grid.Row="4" Grid.Column="0" Text="Kwota*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock  Grid.Row="6" Grid.Column="0" Text="Opis*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock Grid.Row="9" Grid.Column="0" Text="* Konieczne do wypełnienia" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,8,0,-17" FontSize="10" Background="{x:Null}"  Height="20"  />
+                <TextBlock x:Name="niepoprawneDaneWyplaty"  Grid.Row="9" Margin="5,8,0,-17"  Grid.Column="1" Text="Niepoprawne dane" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="10" Background="{x:Null}" Foreground="#FF950D13" Height="24" Visibility="Collapsed"  />
+
+
+
+
+                <TextBox x:Name="nrKonta"     Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                <TextBox x:Name="Kwotawyplaty"    Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                <TextBox x:Name="opisWyplaty"  TextWrapping="Wrap" Grid.RowSpan="3"  Grid.Row="6" Grid.Column="1"   BorderBrush="#FF0E1323" ></TextBox>
+
+            </Grid>
+            <Button Height="30" Width="90" Content="Wyślij" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,5" Style="{StaticResource buttony}" Click="Button_Click_9" >
+            </Button>
+            <Button Height="30" Width="90" Content="Cofnij" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,111,5" Style="{StaticResource buttony}" Click="Button_Click_8"  ></Button>
+
+
+        </Grid>
+        <Grid x:Name="HistoriaWyplat"  Height="344" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                    <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+                </Style>
+            </Grid.Resources>
+            <ScrollViewer Margin="0,0,0,15" VerticalAlignment="Bottom" Height="320">
+                <DataGrid x:Name="Hwyplat" Height="320"   IsReadOnly="True"   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" AutoGenerateColumns="False" GridLinesVisibility="None"  CanUserResizeRows="False" Background="AntiqueWhite" RowBackground="WhiteSmoke" HorizontalScrollBarVisibility="Auto"  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="70" Header="Kwota" Binding="{Binding Wielkosc_wyplaty}"></DataGridTextColumn>
+
+                        <DataGridTextColumn Width="130" Header="Data" Binding="{Binding Data_wyplaty}"></DataGridTextColumn>
+
+                      
+                        <DataGridTextColumn Header="Nr. konta" Width="120" Binding="{Binding Nr_konta}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Opis" Width="300" Binding="{Binding Opis}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+        <Grid x:Name="HistoriaWplat"  Height="344" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Grid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontFamily" Value="Global Monospace"></Setter>
+                    <Setter Property="Foreground" Value="DarkSlateGray"></Setter>
+                </Style>
+            </Grid.Resources>
+            <ScrollViewer Margin="7,0,0,15" VerticalAlignment="Bottom" Height="320">
+                <DataGrid HorizontalScrollBarVisibility="Auto" x:Name="Hwplat" Height="320"  AutoGenerateColumns="False" IsReadOnly="True"   CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeRows="False" GridLinesVisibility="None"  Background="AntiqueWhite" RowBackground="WhiteSmoke" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Kwota" Width="80" Binding="{Binding Kwota_wplaty}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Płatność" Width="100" Binding="{Binding Sposob_platnosci}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Data wpłaty" Width="160" Binding="{Binding Data_wpłaty}" />
+                       
+                        
+                    </DataGrid.Columns>
+
+
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+        <Grid x:Name="Visa"  Height="344" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Grid x:Name="sposobPlaceniaVisa"   Opacity="0.6" Margin="0,0,0,4" >
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="280"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+
+
+
+
+
+
+
+                </Grid.RowDefinitions>
+
+
+                <TextBlock  Grid.Row="2" Grid.Column="0" Text="Imie*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock  Grid.Row="4" Grid.Column="0" Text="Nazwisko*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock  Grid.Row="6" Grid.Column="0" Text="Nr karty*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock  Grid.Row="8" Grid.Column="0" Text="Kod*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock  Grid.Row="10" Grid.Column="0" Text="Kwota*:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="14" ></TextBlock>
+                <TextBlock Grid.Row="11" Grid.Column="0" Text="* Konieczne do wypełnienia" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,8,0,-17" FontSize="10" Background="{x:Null}"  Height="20"  />
+                <TextBlock x:Name="niepoprawnakarta" Grid.Row="11" Margin="5,8,0,-17"  Grid.Column="1" Text="Niepoprawne dane lub stan konta jest za niski" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="10" Background="{x:Null}" Foreground="#FF950D13" Height="24" Visibility="Collapsed"  />
+
+
+
+
+                <TextBox x:Name="ImieKarta"    Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                <TextBox x:Name="NazwiskoKarta"   Grid.Row="4" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                <TextBox x:Name="Nrkarta"    Grid.Row="6" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                <TextBox x:Name="KodKarta"   Grid.Row="8" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+                <TextBox x:Name="Kwota"   Grid.Row="10" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="#FF0E1323" ></TextBox>
+
+            </Grid>
+            <Button Height="30" Width="90" Content="Dalej" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,5" Style="{StaticResource buttony}" Click="Button_Click_2"></Button>
+            <Button Height="30" Width="90" Content="Cofnij" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,111,5" Style="{StaticResource buttony}" Click="Button_Click_4" ></Button>
+
+
+
+        </Grid>
+
+        <StackPanel x:Name="PotwiedzeniePlatnosci"  Height="344" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <TextBlock Margin="0,10" Text="Dziękujemy" Style="{StaticResource stylTb}" FontSize="30" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Margin="0,10" Text="twoja transakcja została wykonana " Style="{StaticResource stylTb}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+            <Button Margin="0,10" Width="100" Height="40" Content="Koniec" Style="{StaticResource buttony}" Click="Button_Click_3"></Button>
+
+
+
+        </StackPanel>
+
+        <StackPanel x:Name="PaySafe"  Height="344" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <TextBlock Margin="10,10"  Text="Podaj kod Paysafe" Style="{StaticResource stylTb}" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+            <TextBox Margin="100,10" x:Name="wpisywanieKoduPaysafe" Style="{StaticResource stylTbBox}" FontSize="25"></TextBox>
+            <TextBlock Margin="10,10"  Text="Przykładowy kod" Style="{StaticResource stylTb}" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+            <TextBlock Margin="10,10"  Text="8490 9403 5012 0063" Style="{StaticResource stylTb}" HorizontalAlignment="Center" FontSize="30"></TextBlock>
+            <TextBlock x:Name="niepprawnyPaysafe" Margin="10,10"  Text="Wprowadzono niepoprawny kod" Style="{StaticResource stylTb}" HorizontalAlignment="Center" FontSize="15" Foreground="#FF8D2015" Visibility="Collapsed"></TextBlock>
+            <Button Style="{StaticResource buttony2}" Content="Wprowadź" FontSize="20" Click="Button_Click_5"></Button>
+            <Button Style="{StaticResource buttony2}" Content="Cofnij" FontSize="20" Click="Button_Click_11" ></Button>
+
+
+        </StackPanel>
+
+
+
+
+    </Grid>
+</Window>
